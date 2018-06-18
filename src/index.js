@@ -1,10 +1,20 @@
-
-let $ = require("jquery"); // Import jQuery
+/*
+ * Stratum.js
+ * Grid layout library
+ * MIT License
+ * by Volodia Zakhovaiko
+ */
 
 $(document).ready(function () {
 
-    let grid = $('[data-grid]');     // Get all grids
-    let columns = grid.data('grid'); // Count of the columns
+    // Get all grids
+    let grid = $('[data-grid]');
+
+    // Count of the columns
+    let columns = grid.data('grid');
+
+    // Set default padding gap
+    let padding = 15;
 
     // Set default value if user does not set count of the columns
     if (columns === undefined || !columns) {
@@ -15,24 +25,30 @@ $(document).ready(function () {
         position: 'relative'
     });
 
-    let items = [];            // Array with item's height and width
-    let top = 0,               // Initial values
-        left = -100 / columns; // Left and top positions
+    // Array with item's height and width
+    let items = [];
+    // Initial values: left and top position
+    let top = 0, left = -100 / columns;
 
     //
-    // Main cycle: there we will check current coordinates
+    //----- Main cycle: there we will check current coordinates -----//
     grid.children().each(function (i) {
 
-        i % columns === 0 ? left = 0 : left += 100 / columns; // Set left position for every nth block
+        $(this).wrap('<div class="grid-item"></div>div>');
+
+        // Set left position for every nth block
+        i % columns === 0 ? left = 0 : left += 100 / columns;
 
         // Set width and left position the first
-        $(this).css({
+        $(this).parent().css({
             position : 'absolute',
             width : 100 / columns + '%',
-            left: left + '%'
+            left: left + '%',
+            padding: padding
         });
 
-        items.push($(this).outerHeight(true)); // Save height value in main array to check top positions
+        // Save height value in main array to check top positions
+        items.push($(this).parent().outerHeight(true));
 
         // Set top position
         if (items[i - columns] === undefined) {
@@ -47,7 +63,7 @@ $(document).ready(function () {
         }
 
         // Update and set new position values
-        $(this).css({
+        $(this).parent().css({
             top: top
         });
     });
