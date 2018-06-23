@@ -101,10 +101,15 @@
         }, options);
 
         var grid = $(this);
+        var heights = [];
 
         // Count of the columns and default padding gap
         var columns = settings.columns;
         var padding = settings.padding;
+
+        // Default positions
+        var top = 0;
+        var left = -100 / columns;
 
         // Iterate and reformat each matched element
         return this.each(function () {
@@ -114,11 +119,6 @@
                 grid.css({
                     position: 'relative'
                 });
-
-                // Array with items height
-                var items = [];
-                var top = 0;
-                var left = -100 / columns;
 
                 //
                 // Main cycle: there we will check current coordinates
@@ -141,55 +141,45 @@
                     });
 
                     // Save height value in main array to check top positions
-                    items.push(gridItem.parent().outerHeight(true));
-
-                    // Set top position
-                    if (items[i - columns] === undefined) {
-                        top = 0;
-                    } else {
-                        var itemNumber = i;
-                        top = 0;
-                        while (itemNumber >= columns) {
-                            top += items[itemNumber - columns];
-                            itemNumber -= columns;
-                        }
-                    }
+                    heights.push(gridItem.parent().outerHeight(true));
 
                     // Update and set new position values
                     gridItem.parent().css({
-                        top: top
+                        top: getTopPosition(gridItem, i)
                     });
                 });
             }
 
             function resize() {
-                var items = [],
-                    top = 0;
+                heights = [];
+                top = 0;
 
                 grid.children().each(function (i, obj) {
-
                     var gridItem = $(obj);
 
-                    // Save height value in main array to check top positions
-                    items.push(gridItem.outerHeight(true));
-
-                    // Set top position
-                    if (items[i - columns] === undefined) {
-                        top = 0;
-                    } else {
-                        var itemNumber = i;
-                        top = 0;
-                        while (itemNumber >= columns) {
-                            top += items[itemNumber - columns];
-                            itemNumber -= columns;
-                        }
-                    }
+                    heights.push(gridItem.outerHeight(true));
 
                     // Update and set new position values
                     gridItem.css({
-                        top: top
+                        top: getTopPosition(gridItem, i)
                     });
                 });
+            }
+
+            //
+            // Get current top position value
+            function getTopPosition(obj, index) {
+                if (heights[index - columns] === undefined) {
+                    top = 0;
+                } else {
+                    var itemNumber = index;
+                    top = 0;
+                    while (itemNumber >= columns) {
+                        top += heights[itemNumber - columns];
+                        itemNumber -= columns;
+                    }
+                }
+                return top;
             }
 
             $(window).on('load', function () {
