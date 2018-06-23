@@ -7,6 +7,10 @@
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --watch"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zaxoavoki/stratum.js"
+  },
   "author": "Volodia Zakhovaiko",
   "license": "MIT",
   "devDependencies": {

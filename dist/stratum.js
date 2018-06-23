@@ -91,77 +91,115 @@
 "use strict";
 
 
-/*
- * Stratum.js
- * Grid layout library
- * MIT License
- * by Volodia Zakhovaiko
- */
+(function ($) {
 
-$(document).ready(function () {
+    $.fn.stratum = function (options) {
 
-    // Get all grids
-    var grid = $('[data-grid]');
+        var settings = $.extend({
+            padding: 15,
+            columns: 3
+        }, options);
 
-    // Count of the columns
-    var columns = grid.data('grid');
+        var grid = $(this);
 
-    // Set default padding gap
-    var padding = 15;
+        // Count of the columns and default padding gap
+        var columns = settings.columns;
+        var padding = settings.padding;
 
-    // Set default value if user does not set count of the columns
-    if (columns === undefined || !columns) {
-        columns = 3;
-    }
+        // Iterate and reformat each matched element
+        return this.each(function () {
 
-    grid.css({
-        position: 'relative'
-    });
+            // Initialize stratum function
+            function init() {
+                grid.css({
+                    position: 'relative'
+                });
 
-    // Array with item's height and width
-    var items = [];
-    // Initial values: left and top position
-    var top = 0,
-        left = -100 / columns;
+                // Array with items height
+                var items = [];
+                var top = 0;
+                var left = -100 / columns;
 
-    //
-    //----- Main cycle: there we will check current coordinates -----//
-    grid.children().each(function (i) {
+                //
+                // Main cycle: there we will check current coordinates
+                grid.children().each(function (i, obj) {
 
-        $(this).wrap('<div class="grid-item"></div>div>');
+                    var gridItem = $(obj);
 
-        // Set left position for every nth block
-        i % columns === 0 ? left = 0 : left += 100 / columns;
+                    if (gridItem.attr('class') !== "grid_item") {
+                        gridItem.wrap('<div class="grid_item"></div>');
+                    }
 
-        // Set width and left position the first
-        $(this).parent().css({
-            position: 'absolute',
-            width: 100 / columns + '%',
-            left: left + '%',
-            padding: padding
-        });
+                    i % columns === 0 ? left = 0 : left += 100 / columns;
 
-        // Save height value in main array to check top positions
-        items.push($(this).parent().outerHeight(true));
+                    // Set width and others CSS rules
+                    gridItem.parent().css({
+                        position: 'absolute',
+                        width: 100 / columns + '%',
+                        left: left + '%',
+                        padding: padding
+                    });
 
-        // Set top position
-        if (items[i - columns] === undefined) {
-            top = 0;
-        } else {
-            var itemNumber = i;
-            top = 0;
-            while (itemNumber >= columns) {
-                top += items[itemNumber - columns];
-                itemNumber -= columns;
+                    // Save height value in main array to check top positions
+                    items.push(gridItem.parent().outerHeight(true));
+
+                    // Set top position
+                    if (items[i - columns] === undefined) {
+                        top = 0;
+                    } else {
+                        var itemNumber = i;
+                        top = 0;
+                        while (itemNumber >= columns) {
+                            top += items[itemNumber - columns];
+                            itemNumber -= columns;
+                        }
+                    }
+
+                    // Update and set new position values
+                    gridItem.parent().css({
+                        top: top
+                    });
+                });
             }
-        }
 
-        // Update and set new position values
-        $(this).parent().css({
-            top: top
+            function resize() {
+                var items = [],
+                    top = 0;
+
+                grid.children().each(function (i, obj) {
+
+                    var gridItem = $(obj);
+
+                    // Save height value in main array to check top positions
+                    items.push(gridItem.outerHeight(true));
+
+                    // Set top position
+                    if (items[i - columns] === undefined) {
+                        top = 0;
+                    } else {
+                        var itemNumber = i;
+                        top = 0;
+                        while (itemNumber >= columns) {
+                            top += items[itemNumber - columns];
+                            itemNumber -= columns;
+                        }
+                    }
+
+                    // Update and set new position values
+                    gridItem.css({
+                        top: top
+                    });
+                });
+            }
+
+            $(window).on('load', function () {
+                init();
+            }).on('resize', function () {
+                resize();
+            });
         });
-    });
-});
+    };
+})(jQuery);
 
 /***/ })
 /******/ ]);
