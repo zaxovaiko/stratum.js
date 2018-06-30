@@ -28,7 +28,8 @@
                 });
 
                 //
-                // Main cycle: there we will check current coordinates
+                // Main cycle will check current coordinates
+                //
                 grid.children().each(function (i, obj) {
 
                     let gridItem = $(obj);
@@ -55,8 +56,35 @@
                         top: getTopPosition(gridItem, i)
                     });
                 });
+
+                setGridHeight(heights);
             }
 
+            //
+            // Count grid height value
+            // Todo: Rewrite function
+            //
+            function setGridHeight(array) {
+                let maxSectionHeight = 0, sectionHeight;
+                for (let col = 0; col < columns; col++) {
+                    sectionHeight = 0;
+                    for (let i = col; i < array.length; i += columns) {
+                        sectionHeight += array[i];
+                    }
+
+                    if (maxSectionHeight < sectionHeight) {
+                        maxSectionHeight = sectionHeight;
+                    }
+                }
+
+                grid.css({
+                    'height' : maxSectionHeight
+                });
+            }
+
+            //
+            // Rewrite top position value while resizing
+            //
             function resize() {
                 heights = [];
                 top = 0;
@@ -71,10 +99,13 @@
                         top: getTopPosition(gridItem, i)
                     });
                 });
+
+                setGridHeight(heights);
             }
 
             //
             // Get current top position value
+            //
             function getTopPosition(obj, index) {
                 if (heights[index - columns] === undefined) {
                     top = 0;

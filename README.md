@@ -8,7 +8,21 @@
 ### How to use?
 
  - You can download it with [stratum.js CDN](https://cdn.rawgit.com/zaxoavoki/stratum.js/31373231/dist/stratum.min.js);
- - Use npm catalog;
+ - Use npm catalog *(in future)*;
+
+----------
+
+You can create a grid using `stratum()` function. It gets object as
+parameter with two options:
+
+#### `padding:`
+
+ - Set padding gaps between grid items. You can put *number* or *string* in such format: `padding: '15px 10px 20px 30px'`, which means 
+ that you want to set padding-top with **15px**, padding-bottom with **20px** and etc.
+ 
+#### `columns:`
+
+ - Set an amount of columns in grid. Can be only a *number*.
 
 ### Future updates
  

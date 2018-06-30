@@ -13,7 +13,7 @@
 <body>
 
 <div class="container">
-    <div data-grid="3">
+    <div id="grid">
         <div class="card">
             <div class="card-body">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, et eveniet! Ab alias beatae delectus
@@ -101,15 +101,19 @@
             </div>
         </div>
     </div>
+
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, asperiores delectus dolore dolorum illo illum
+    labore laboriosam nemo neque nulla provident quia quibusdam, quos reiciendis, reprehenderit sequi sit sunt
+    voluptates!
 </div>
 
 <!-- Include jQuery first and stratum.js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../dist/stratum.min.js"></script>
 <script>
-    $('[data-grid]').stratum({
+    $('#grid').stratum({
         padding: 5,
-        columns: 2
+        columns: 3
     });
 </script>
 
