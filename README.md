@@ -14,7 +14,7 @@
 ----------
 
 You can create a grid using `stratum()` function. It gets object as
-parameter with two options:
+parameter with three options:
 
 #### `padding:`
 
@@ -25,16 +25,21 @@ parameter with two options:
 
  - Set an amount of columns in grid. Can be only a *number*.
 
+#### `smart:`
+
+ -  Accept *boolean* value `true` or `false`. Makes the grid more flexible and more compact.
+ > **Notice** Using this option script will set grid items in not right order. 
+ 
 ### Future updates
  
  - Older browsers' supports;
- - Smart position system *for resize*;
- - Delete `setGridHeight` and `resize` functions;
+ - A few examples in demo folder;
  - Package in the [npm](https://www.npmjs.com/) catalog;
 
 ### Copyright and license
+
 Code and documentation copyright 2018. Code released under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
 
 ##### Work together
 
-If you have any ideas how to improve this plugin just tell me or send pull request.
+You can improve this plugin with your ideas. Just tell me or send pull request.
