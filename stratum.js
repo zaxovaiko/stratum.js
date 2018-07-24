@@ -41,17 +41,19 @@
                     // Create wrapper only one time when initialize for children element.
                     if (gridPseudoItem.data('grid-item') !== undefined) {
                         gridItem = gridPseudoItem;
-                        console.log('works');
                     } else {
                         gridItem = gridPseudoItem.wrap('<div data-grid-item></div>').parent();
                     }
 
+                    // If block is hidden then don't set padding gap for it.
                     // Set width and others main CSS rules.
-                    gridItem.css({
-                        position: 'absolute',
-                        width: 100 / columns + '%',
-                        padding: padding
-                    });
+                    if (gridItem.children().css('display') !== 'none') {
+                        gridItem.css({
+                            position: 'absolute',
+                            width: 100 / columns + '%',
+                            padding: padding
+                        });
+                    }
 
                     let outerHeight = gridItem.outerHeight(true);
 

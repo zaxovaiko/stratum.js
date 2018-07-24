@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <title>Bootstrap 4 Image Grid Demo</title>
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h3 class="text-center py-4 font-weight-light">Example Images Grid</h3>
+
+    <div id="grid">
+        <img src="https://dummyimage.com/500x800/000/fff&text=1" alt="Image">
+        <img src="https://dummyimage.com/600x260/000/fff&text=2" alt="Image">
+        <img src="https://dummyimage.com/1100x700/000/fff&text=3" alt="Image">
+        <img src="https://dummyimage.com/400x300/000/fff&text=4" alt="Image">
+        <img src="https://dummyimage.com/400x400/000/fff&text=5" alt="Image">
+        <p class="d-none">
+            If this block is needed but you don't want to show it in the grid
+            you can simply hide it by setting CSS rule display: none.
+        </p>
+        <img src="https://dummyimage.com/1200x900/000/fff&text=6" alt="Image">
+        <img src="https://dummyimage.com/400x400/000/fff&text=7" alt="Image">
+        <img src="https://dummyimage.com/600x500/000/fff&text=8" alt="Image">
+        <img src="https://dummyimage.com/600x500/000/fff&text=9" alt="Image">
+    </div>
+
+    <p class="text-center py-4">
+        There will be any block. It will always stand after the grid. To add/change a photo, just put <code>img</code> tag
+        in the grid block. To see how it seems without smart system just set <code>smart: false</code> or delete this line.
+    </p>
+</div>
+
+<!-- Include jQuery first and stratum.js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../dist/stratum.min.js"></script>
+<script>
+    $('#grid').stratum({
+        padding: 5,
+        columns: 3,
+        smart: true
+    });
+</script>
+
+</body>
+</html>

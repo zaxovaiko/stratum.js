@@ -5,8 +5,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
     mode: 'none',
     entry: {
-        'stratum': './src/index.js',
-        'stratum.min': './src/index.js'
+        'stratum': './stratum.js',
+        'stratum.min': './stratum.js'
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),

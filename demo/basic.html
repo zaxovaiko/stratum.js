@@ -8,14 +8,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 
-    <title>Bootstrap 4 Grid Demo</title>
+    <title>Bootstrap 4 Basic Grid Demo</title>
 </head>
 <body>
 
 <div class="container">
+
+    <h3 class="text-center py-4 font-weight-light">Example Default Grid</h3>
+
     <div id="grid">
         <div class="card">
             <div class="card-body">
+                <h3>Block <span class="font-weight-light">#1</span></h3>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, et eveniet! Ab alias beatae delectus
                 earum eum, eveniet facilis, in odit quae quo recusandae, Lorem ipsum dolor sit amet, consectetur
                 adipisicing elit. Ea enim, pariatur possimus quos ratione repellendus sed voluptate voluptatibus!
@@ -23,16 +27,13 @@
                 voluptatem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores doloribus fugit illo
                 minima, nam officiis quaerat tempora? Ad aliquam commodi explicabo illo impedit labore numquam obcaecati
                 quas sit temporibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aperiam corporis
-                earum, eius facilis incidunt laborum libero nostrum obcaecati odio perferendis quisquam, reiciendis
-                sequi tempora tempore totam vel vero voluptatem! at tempora? Ad aliquam commodi explicabo illo impedit
-                labore numquam obcaecati quas sit temporibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Animi aperiam corporis earum, eius facilis incidunt laborum libero nostrum obcaecati odio perferendis
-                quisquam, reiciendis sequi tempora tempore totam vel vero voluptatem!
+                earum, eius facilis incidunt laborum libero nostrum obcaecati odio perferendis quisquam, reiciendis.
             </div>
         </div>
 
         <div class="card">
             <div class="card-body">
+                <h3>Block <span class="font-weight-light">#2</span></h3>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, et eveniet! Ab alias beatae delectus
                 earum eum, eveniet facilis, in odit quae quo recusandae, repellat sed similique! Corporis, quae
                 reiciendis. Lorem ipsum dolor sit
@@ -41,6 +42,7 @@
 
         <div class="card">
             <div class="card-body">
+                <h3>Block <span class="font-weight-light">#3</span></h3>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, et eveniet! Ab alias beatae delectus
                 earum eum, eveniet facilis, in odit quae quo recusandae, repellat sed similique! Corporis, quae
                 reiciendis. Lorem ipsum dolor sit
@@ -49,6 +51,7 @@
 
         <div class="card">
             <div class="card-body">
+                <h3>Block <span class="font-weight-light">#4</span></h3>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, et eveniet! Ab alias beatae delectus
                 earum eum, eveniet facilis, in od Lorem ipsum dolor sit amet, consectetur adipisicing elit. At
                 consequuntur culpa cumque cupidita
@@ -57,6 +60,7 @@
 
         <div class="card">
             <div class="card-body">
+                <h3>Block <span class="font-weight-light">#5</span></h3>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, et eveniet! Ab alias beatae delectus
                 earum eum, eveniet facilis, in odit quae quo recusandae, repellat
             </div>
@@ -64,6 +68,7 @@
 
         <div class="card">
             <div class="card-body">
+                <h3>Block <span class="font-weight-light">#6</span></h3>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, et eveniet! Ab alias beatae delectus
                 earum eum, eveniet facilis, in
             </div>
@@ -71,15 +76,17 @@
 
         <div class="card">
             <div class="card-body">
+                <h3>Block <span class="font-weight-light">#7</span></h3>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, et eveniet! Ab alias beatae delectus
                 earum eum, eveniet facilis, in
             </div>
         </div>
     </div>
 
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, asperiores delectus dolore dolorum illo illum
-    labore laboriosam nemo neque nulla provident quia quibusdam, quos reiciendis, reprehenderit sequi sit sunt
-    voluptates!
+    <p class="text-center py-4">
+        There will be any block. It will always stand after the grid. To add/change a photo, just put <code>img</code> tag
+        in the grid block. To see how it seems without smart system just set <code>smart: false</code> or delete this line.
+    </p>
 </div>
 
 <!-- Include jQuery first and stratum.js -->
@@ -88,8 +95,7 @@
 <script>
     $('#grid').stratum({
         padding: 5,
-        columns: 3,
-        smart: true
+        columns: 3
     });
 </script>
 
