@@ -91,8 +91,7 @@
                     });
                 });
 
-                // Set grid height.
-                grid.css('height', Math.max.apply(null, sizes));
+                grid.css('height', Math.max.apply(null, sizes)); // Set grid height
             }
 
             $(window).on('load resize', init);

@@ -4,15 +4,25 @@
 
 ### Table of contents
 
+ - [How to install](https://github.com/zaxoavoki/stratum.js#how-to-install)
  - [How to use](https://github.com/zaxoavoki/stratum.js#how-to-use)
  - [Additional information](https://github.com/zaxoavoki/stratum.js#additional-information)
  - [Future updates](https://github.com/zaxoavoki/stratum.js#future-updates)
  - [Copyright and license](https://github.com/zaxoavoki/stratum.js#copyright-and-license)
 
+### How to install
+
+ - You can download it with [stratum.js CDN](https://cdn.rawgit.com/zaxoavoki/stratum.js/31373231/dist/stratum.min.js)
+ - You can find it in [npm](https://www.npmjs.com/package/stratum.js)
+  
+  Use with npm:
+  
+  ```
+  npm i stratum.js
+  ```
+
 ### How to use
-
- - You can download it with [stratum.js CDN](https://cdn.rawgit.com/zaxoavoki/stratum.js/31373231/dist/stratum.min.js);
-
+ 
 You can create a grid using `stratum()` function. It gets object as
 parameter with three options:
 
@@ -36,11 +46,9 @@ parameter with three options:
  
 ### Future updates
  
- - Older browsers' supports;
- - Add stratum.js stylesheet;
- - Pass hidden grid items;
- - Package in the [npm](https://www.npmjs.com/) catalog *(after version 1.5.0)*;
-
+ - Older browsers supports
+ - Add responsive grid checker
+ 
 ### Copyright and license
 
 Code and documentation copyright 2018. Code released under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
