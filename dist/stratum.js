@@ -145,6 +145,7 @@
                     if (gridItem.children().css('display') !== 'none') {
                         gridItem.css({
                             position: 'absolute',
+                            transition: 'ease .5s',
                             width: 100 / columns + '%',
                             padding: padding
                         });
@@ -187,8 +188,7 @@
                     });
                 });
 
-                // Set grid height.
-                grid.css('height', Math.max.apply(null, sizes));
+                grid.css('height', Math.max.apply(null, sizes)); // Set grid height
             }
 
             $(window).on('load resize', init);

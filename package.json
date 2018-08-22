@@ -1,6 +1,6 @@
 {
   "name": "stratum.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Small library for building an excellent grid using Javascript",
   "main": "webpack.config.js",
   "scripts": {

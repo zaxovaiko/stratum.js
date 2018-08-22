@@ -1,6 +1,6 @@
 # Stratum.js — Masonry Grid Library
 
-> version 1.0.1
+> version 1.0.2
 
 ### Table of contents
 
@@ -9,17 +9,17 @@
  - [Additional information](https://github.com/zaxoavoki/stratum.js#additional-information)
  - [Future updates](https://github.com/zaxoavoki/stratum.js#future-updates)
  - [Copyright and license](https://github.com/zaxoavoki/stratum.js#copyright-and-license)
+ - [Changes history](https://github.com/zaxoavoki/stratum.js#changes-history)
 
 ### How to install
 
- - You can download it with [stratum.js CDN](https://cdn.rawgit.com/zaxoavoki/stratum.js/31373231/dist/stratum.min.js)
- - You can find it in [npm](https://www.npmjs.com/package/stratum.js)
+ - Using [NPM](https://www.npmjs.com/package/stratum.js)
   
-  Use with npm:
-  
-  ```
-  npm i stratum.js
-  ```
+    ```
+    npm i stratum.js
+    ```
+
+ - or download [the latest .min version](https://rawgit.com/zaxoavoki/stratum.js/master/dist/stratum.min.js)
 
 ### How to use
  
@@ -42,12 +42,14 @@ parameter with three options:
 
 ### Additional information
  
- You may need to add a grid element once, but you do not want it to be visible. In this case, simply specify for the child element to have `display: none` or add class with this CSS rule.
+ If you need to add a grid element, but you do not want it to be visible. In this case, simply specify for the child element to have `display: none` or add class with this CSS rule.
+ 
+ **stratum.js** project is independent of any other packages. That's why it's light weight and is only
+ *1.7KiB* for minimized version and *7.31KiB* for normal.
  
 ### Future updates
  
- - Older browsers supports
- - Add responsive grid checker
+ - Add support of old browsers
  
 ### Copyright and license
 
@@ -56,3 +58,8 @@ Code and documentation copyright 2018. Code released under the [MIT License](htt
 ##### Work together
 
 You can improve this plugin with your ideas. Just tell me or send pull request.
+
+#### Changes history
+
+`v1.0.2` - Added sliding effect for grid elements.  
+`v1.0.1` - Initiated project. 
