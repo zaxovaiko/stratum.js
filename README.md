@@ -4,12 +4,12 @@
 
 ### Table of contents
 
- - [How to install](https://github.com/zaxoavoki/stratum.js#how-to-install)
- - [How to use](https://github.com/zaxoavoki/stratum.js#how-to-use)
- - [Additional information](https://github.com/zaxoavoki/stratum.js#additional-information)
- - [Future updates](https://github.com/zaxoavoki/stratum.js#future-updates)
- - [Copyright and license](https://github.com/zaxoavoki/stratum.js#copyright-and-license)
- - [Changes history](https://github.com/zaxoavoki/stratum.js#changes-history)
+ - [How to install](#how-to-install)
+ - [How to use](#how-to-use)
+ - [Additional information](#additional-information)
+ - [Future updates](#future-updates)
+ - [Copyright and license](#copyright-and-license)
+ - [Changes history](#changes-history)
 
 ### How to install
 
@@ -38,14 +38,13 @@ parameter with three options:
 #### `smart:`
 
  -  Accept *boolean* value `true` or `false`. Makes the grid more flexible and more compact.
- > **Notice** Using this option script will set grid items in not right order. 
-
+ > **Notice**: Using this option script will set grid items in not right order. 
+ 
+ If you need to add one or a few grid elements and it must be invisible then just specify `display: none;` or add class with this CSS rule to this block.
 ### Additional information
  
- If you need to add a grid element, but you do not want it to be visible. In this case, simply specify for the child element to have `display: none` or add class with this CSS rule.
- 
- **stratum.js** project is independent of any other packages. That's why it's light weight and is only
- *1.7KiB* for minimized version and *7.31KiB* for normal.
+ This project is independent of any other packages. That's why it's light weight and is only
+ ~**1.7KiB** for minimized version and ~**7.4KiB** for normal.
  
 ### Future updates
  
@@ -59,7 +58,7 @@ Code and documentation copyright 2018. Code released under the [MIT License](htt
 
 You can improve this plugin with your ideas. Just tell me or send pull request.
 
-#### Changes history
+### Changes history
 
 `v1.0.2` - Added sliding effect for grid elements.  
 `v1.0.1` - Initiated project. 
