@@ -119,12 +119,8 @@
         return this.each(function () {
 
             function init() {
-
-                // Clear an array before using.
-                sizes = [];
-
-                // Set relative option for grid.
-                grid.css('position', 'relative');
+                sizes = []; // Clear an array before using.
+                grid.css('position', 'relative'); // Set relative option for grid.
 
                 // Iterate each grid child item and set new changes.
                 var gridPseudoItems = grid.children();
@@ -145,7 +141,6 @@
                     if (gridItem.children().css('display') !== 'none') {
                         gridItem.css({
                             position: 'absolute',
-                            transition: 'ease .5s',
                             width: 100 / columns + '%',
                             padding: padding
                         });
@@ -183,6 +178,7 @@
                     }
 
                     gridItem.css({
+                        transition: 'ease .4s',
                         left: left + '%',
                         top: top
                     });

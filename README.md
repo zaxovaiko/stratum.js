@@ -1,6 +1,6 @@
 # Stratum.js — Masonry Grid Library
 
-> version 1.0.2
+> version 1.0.3
 
 ### Table of contents
 
@@ -44,7 +44,7 @@ parameter with three options:
 ### Additional information
  
  This project is independent of any other packages. That's why it's light weight and is only
- ~**1.7KiB** for minimized version and ~**7.4KiB** for normal.
+ ~**1.7KiB** for minimized version and ~**7.27KiB** for normal.
  
 ### Future updates
  
@@ -60,5 +60,6 @@ You can improve this plugin with your ideas. Just tell me or send pull request.
 
 ### Changes history
 
+`v1.0.3` - Fixed bug with padding gap between items.  
 `v1.0.2` - Added sliding effect for grid elements.  
 `v1.0.1` - Initiated project. 

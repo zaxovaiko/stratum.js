@@ -1,6 +1,6 @@
 {
   "name": "stratum.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Small library for building an excellent grid using Javascript",
   "main": "webpack.config.js",
   "homepage": "https://zaxoavoki.github.io/stratum.js/",
