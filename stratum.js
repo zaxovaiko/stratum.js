@@ -1,8 +1,6 @@
 (function ($) {
-
     $.fn.stratum = function (args) {
-
-        // Default options.
+        // Default options
         let options = $.extend({
             padding: 10,
             columns: 3,
@@ -12,26 +10,25 @@
         let $this = $(this);
         let grid = $this, sizes;
 
-        // Set amount of columns and padding gaps for more readability.
-        let columns = options.columns;
+        // Set amount of columns and padding gaps for more readability
+        let columns = parseInt(options.columns);
         let padding = options.padding;
-        let smart   = options.smart;
+        let smart = options.smart;
 
-        // Default positions.
+        // Default positions
         let top = 0, left = 0;
 
-        // Iterate and reformat each matched element.
-        return this.each(function () {
+        // Iterate and reformat each matched element
+        return this.each(() => {
+            let init = () => {
+                sizes = [];                       // Clear an array before using
+                grid.css('position', 'relative'); // Set relative option for grid
 
-            function init() {
-                sizes = [];                       // Clear an array before using.
-                grid.css('position', 'relative'); // Set relative option for grid.
-
-                // Iterate each grid child item and set new changes.
+                // Iterate each grid child item and set new changes
                 let gridPseudoItems = grid.children();
-                gridPseudoItems.each(function (i, object) {
-
-                    let gridPseudoItem = $(object), gridItem;
+                gridPseudoItems.each(function (i, element) {
+                    console.log(i)
+                    let gridPseudoItem = $(element), gridItem;
 
                     // Create wrapper only one time when initialize for children element.
                     if (gridPseudoItem.data('grid-item') !== undefined) {
@@ -88,10 +85,9 @@
                 });
 
                 grid.css('height', Math.max.apply(null, sizes)); // Set grid height
-            }
+            };
 
             $(window).on('load resize', init);
         });
     };
-
 }(jQuery));

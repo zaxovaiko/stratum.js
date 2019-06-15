@@ -8,6 +8,24 @@ module.exports = {
         'stratum': './stratum.js',
         'stratum.min': './stratum.js'
     },
+    output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+        rules: [
+            {
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
+        ]
+    },
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new UglifyJsPlugin({
@@ -17,23 +35,5 @@ module.exports = {
                 compress: true
             }
         })
-    ],
-    output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env']
-                    }
-                }
-            }
-        ]
-    }
+    ]
 };

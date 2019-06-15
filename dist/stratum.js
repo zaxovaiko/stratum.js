@@ -86,110 +86,101 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+/***/ (function(module, exports) {
 
 (function ($) {
+  $.fn.stratum = function (args) {
+    // Default options
+    var options = $.extend({
+      padding: 10,
+      columns: 3,
+      smart: false
+    }, args);
+    var $this = $(this);
+    var grid = $this,
+        sizes; // Set amount of columns and padding gaps for more readability
 
-    $.fn.stratum = function (args) {
+    var columns = parseInt(options.columns);
+    var padding = options.padding;
+    var smart = options.smart; // Default positions
 
-        // Default options.
-        var options = $.extend({
-            padding: 10,
-            columns: 3,
-            smart: false
-        }, args);
+    var top = 0,
+        left = 0; // Iterate and reformat each matched element
 
-        var $this = $(this);
-        var grid = $this,
-            sizes = void 0;
+    return this.each(function () {
+      var init = function init() {
+        sizes = []; // Clear an array before using
 
-        // Set amount of columns and padding gaps for more readability.
-        var columns = options.columns;
-        var padding = options.padding;
-        var smart = options.smart;
+        grid.css('position', 'relative'); // Set relative option for grid
+        // Iterate each grid child item and set new changes
 
-        // Default positions.
-        var top = 0,
-            left = 0;
+        var gridPseudoItems = grid.children();
+        gridPseudoItems.each(function (i, element) {
+          console.log(i);
+          var gridPseudoItem = $(element),
+              gridItem; // Create wrapper only one time when initialize for children element.
 
-        // Iterate and reformat each matched element.
-        return this.each(function () {
+          if (gridPseudoItem.data('grid-item') !== undefined) {
+            gridItem = gridPseudoItem;
+          } else {
+            gridItem = gridPseudoItem.wrap('<div data-grid-item></div>').parent();
+          } // If block is hidden then don't set padding gap for it.
+          // Set width and others main CSS rules.
 
-            function init() {
-                sizes = []; // Clear an array before using.
-                grid.css('position', 'relative'); // Set relative option for grid.
 
-                // Iterate each grid child item and set new changes.
-                var gridPseudoItems = grid.children();
-                gridPseudoItems.each(function (i, object) {
+          if (gridItem.children().css('display') !== 'none') {
+            gridItem.css({
+              position: 'absolute',
+              width: 100 / columns + '%',
+              padding: padding
+            });
+          }
 
-                    var gridPseudoItem = $(object),
-                        gridItem = void 0;
+          var outerHeight = gridItem.outerHeight(true); // If SS (smart system) is activated.
 
-                    // Create wrapper only one time when initialize for children element.
-                    if (gridPseudoItem.data('grid-item') !== undefined) {
-                        gridItem = gridPseudoItem;
-                    } else {
-                        gridItem = gridPseudoItem.wrap('<div data-grid-item></div>').parent();
-                    }
+          if (smart) {
+            var index,
+                minTop = 0;
 
-                    // If block is hidden then don't set padding gap for it.
-                    // Set width and others main CSS rules.
-                    if (gridItem.children().css('display') !== 'none') {
-                        gridItem.css({
-                            position: 'absolute',
-                            width: 100 / columns + '%',
-                            padding: padding
-                        });
-                    }
+            if (sizes.length >= columns) {
+              var minHeight = Math.min.apply(null, sizes); // Find min value = min height.
 
-                    var outerHeight = gridItem.outerHeight(true);
+              index = sizes.indexOf(minHeight); // Find index of column.
 
-                    // If SS (smart system) is activated.
-                    if (smart) {
-                        var index = void 0,
-                            minTop = 0;
-                        if (sizes.length >= columns) {
-                            var minHeight = Math.min.apply(null, sizes); // Find min value = min height.
-                            index = sizes.indexOf(minHeight); // Find index of column.
-                            top = minHeight;
-                            sizes[index] += outerHeight; // Add new height to next circle.
-                        } else {
-                            top = minTop; // Is 0 while array has only {columns} elements.
-                            index = i;
-                            sizes.push(outerHeight);
-                        }
+              top = minHeight;
+              sizes[index] += outerHeight; // Add new height to next circle.
+            } else {
+              top = minTop; // Is 0 while array has only {columns} elements.
 
-                        left = 100 / columns * (index % columns);
-                    } else {
-                        i % columns === 0 ? left = 0 : left += 100 / columns;
-
-                        // Add old height value in each iteration.
-                        if (sizes.length < columns) {
-                            top = 0;
-                            sizes.push(outerHeight);
-                        } else {
-                            top = sizes[i % columns];
-                            sizes[i % columns] += outerHeight;
-                        }
-                    }
-
-                    gridItem.css({
-                        transition: 'ease .4s',
-                        left: left + '%',
-                        top: top
-                    });
-                });
-
-                grid.css('height', Math.max.apply(null, sizes)); // Set grid height
+              index = i;
+              sizes.push(outerHeight);
             }
 
-            $(window).on('load resize', init);
+            left = 100 / columns * (index % columns);
+          } else {
+            i % columns === 0 ? left = 0 : left += 100 / columns; // Add old height value in each iteration.
+
+            if (sizes.length < columns) {
+              top = 0;
+              sizes.push(outerHeight);
+            } else {
+              top = sizes[i % columns];
+              sizes[i % columns] += outerHeight;
+            }
+          }
+
+          gridItem.css({
+            transition: 'ease .4s',
+            left: left + '%',
+            top: top
+          });
         });
-    };
+        grid.css('height', Math.max.apply(null, sizes)); // Set grid height
+      };
+
+      $(window).on('load resize', init);
+    });
+  };
 })(jQuery);
 
 /***/ })
